@@ -4,14 +4,12 @@ import Home from './pages/Home.jsx';
 import './index.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import Header from './layouts/Header.jsx';
 import router from './router/index.jsx';
 import { RouterProvider } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Header />
       <RouterProvider router={router}>
         <Home />
       </RouterProvider>

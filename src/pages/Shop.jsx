@@ -1,7 +1,10 @@
+import Layout from "../layouts/Layout"
 
 const Shop = () => {
 	return (
-		<div>Shop</div>
+		<Layout>
+			<div>Shop</div>
+		</Layout>
 	)
 }
 
