@@ -1,34 +1,26 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useGetRandomPastriesQuery } from "../services/game"
 
 const WinPatries = ({ win }) => {
 	const { data, error, isLoading } = useGetRandomPastriesQuery(win);
 
-	const addTotal = useCallback(() => {
-		console.log("addTotal");
+	const addTotal = (addWin) => {
 		if (localStorage.getItem('total')) {
 			const newTotal = parseInt(localStorage.getItem('total')) + win;
+			console.log("newTotal", newTotal);
 			localStorage.setItem('total', newTotal);
 		}
 		else {
 			localStorage.setItem('total', win);
 		}
-	}, [win]);
+	}
 
 	useEffect(() => {
-		console.log("neaw");
-		if (data) {
-			addTotal();
+		if (data && data.length > 0) {
+			addTotal(data.length);
 		}
-	}, [data, addTotal]);
-	/* useEffect(() => {
-		if (!error) {
-			const newTotal = total + 1;
-			setTotal(newTotal);
-			localStorage.setItem('total', newTotal);
-			console.log("totalAcc", localStorage.getItem('total'));
-		}
-	}, [error, total]); */
+	}), [data];
+
 	if (isLoading) return <p>Loading...</p>;
 	if (error) return <p>Error</p>;
 
