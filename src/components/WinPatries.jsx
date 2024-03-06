@@ -1,19 +1,37 @@
-import { useContext, useEffect } from 'react';
-import { GameContext } from '../pages/Home';
-import { useGetRandomPastriesQuery } from "../services/pastries"
+import { useEffect, useCallback } from 'react';
+import { useGetRandomPastriesQuery } from "../services/game"
 
-const WinPatries = () => {
-	const { win } = useContext(GameContext);
+const WinPatries = ({ win }) => {
+	const { data, error, isLoading } = useGetRandomPastriesQuery(win);
 
-	const { data, error, isLoading, refetch } = useGetRandomPastriesQuery(win);
-
+	const addTotal = useCallback(() => {
+		console.log("addTotal");
+		if (localStorage.getItem('total')) {
+			const newTotal = parseInt(localStorage.getItem('total')) + win;
+			localStorage.setItem('total', newTotal);
+		}
+		else {
+			localStorage.setItem('total', win);
+		}
+	}, [win]);
 
 	useEffect(() => {
-		refetch();
-	}, [win, refetch]);
-
+		console.log("neaw");
+		if (data) {
+			addTotal();
+		}
+	}, [data, addTotal]);
+	/* useEffect(() => {
+		if (!error) {
+			const newTotal = total + 1;
+			setTotal(newTotal);
+			localStorage.setItem('total', newTotal);
+			console.log("totalAcc", localStorage.getItem('total'));
+		}
+	}, [error, total]); */
 	if (isLoading) return <p>Loading...</p>;
 	if (error) return <p>Error</p>;
+
 	return (
 		<div className="text-center">
 			{win && (
@@ -31,5 +49,4 @@ const WinPatries = () => {
 		</div>
 	);
 }
-
 export default WinPatries;

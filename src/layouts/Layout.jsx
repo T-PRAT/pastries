@@ -19,6 +19,10 @@ const Layout = ({ children }) => {
 					</NavLink>
 					<NavLink className={({ isActive }) =>
 						[isActive ? "text-gray-100" : "text-gray-400"].join(" ")
+					} to={"/total"}>Total</NavLink>
+
+					<NavLink className={({ isActive }) =>
+						[isActive ? "text-gray-100" : "text-gray-400"].join(" ")
 					} to={"/shop"}>Shop</NavLink>
 				</div>
 			</nav>

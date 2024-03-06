@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useContext } from "react";
-import { GameContext } from "../pages/Home";
 
-const Yams = () => {
+// eslint-disable-next-line react/prop-types
+const Yams = ({ setWin }) => {
 	const [dice, setDice] = useState([1, 2, 3, 4, 5]);
-	const { setWin } = useContext(GameContext);
 	const [played, setPlayed] = useState(false);
 
 	const checkWin = (diceArray) => {
@@ -13,8 +11,10 @@ const Yams = () => {
 		for (let i = 0; i < 4; i++) {
 			if (diceArray[i] === diceArray[i + 1]) {
 				count++;
-				if (count === 3) setWin(1);
-				if (count === 4) setWin(2);
+				if (count === 3)
+					return (1)
+				if (count === 4)
+					return (2)
 			} else {
 				count = 1;
 			}
@@ -26,7 +26,7 @@ const Yams = () => {
 		setWin(null);
 		const newDice = [...dice.map(() => Math.floor(Math.random() * 6) + 1)];
 		setDice([...newDice]);
-		checkWin(newDice);
+		setWin(checkWin(newDice));
 	};
 
 	return (

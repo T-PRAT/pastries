@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { pastriesApi } from './services/pastries';
+import { gameApi } from './services/game';
 
 export const store = configureStore({
 	reducer: {
-		[pastriesApi.reducerPath]: pastriesApi.reducer,
+		[gameApi.reducerPath]: gameApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(pastriesApi.middleware),
+		getDefaultMiddleware().concat(gameApi.middleware),
 });
