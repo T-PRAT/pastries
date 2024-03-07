@@ -1,15 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-hot-toast'
 
 export const pastriesApi = createApi({
 	reducerPath: 'pastriesApi',
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/api/', credentials: 'include' }),
-	tagTypes: ['Pastries'],
 	endpoints: (builder) => ({
 		getPastries: builder.query({
 			query: () => `pastries`,
-			providesTags: ['Pastries'],
 		}),
 		addPastry: builder.mutation({
 			query: (pastry) => ({
@@ -17,10 +14,7 @@ export const pastriesApi = createApi({
 				method: 'POST',
 				body: pastry,
 			}),
-			onQueryStarted: async (arg, { queryFulfilled }) => {
-				const { data } = await queryFulfilled;
-				toast.success(`Pastry ${data.name} added successfully!`);
-			},
+			onQueryStarted: async () => { toast.success(`Pastry added successfully!`) },
 		}),
 		updatePastry: builder.mutation({
 			query: (pastry) => ({
@@ -28,17 +22,14 @@ export const pastriesApi = createApi({
 				method: 'PUT',
 				body: pastry,
 			}),
-			onQueryStarted: async (arg, { queryFulfilled }) => {
-				const { data } = await queryFulfilled;
-				toast.success(`Pastry ${data.name} updated successfully!`);
-			},
+			onQueryStarted: async () => { toast.success(`Pastry updated successfully!`) },
 		}),
 		deletePastry: builder.mutation({
 			query: (id) => ({
 				url: `pastry/${id}`,
 				method: 'DELETE',
 			}),
-			invalidateTags: ['Pastries'],
+			onQueryStarted: async () => { toast.success(`Pastry deleted successfully!`) },
 		}),
 	}),
 })

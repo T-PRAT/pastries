@@ -8,7 +8,7 @@ function Yams() {
   const [win, setWin] = useState(null);
 
   return (<div>
-    <div className="h-36 flex items-center justify-center pt-6">
+    <div className="h-36 flex items-center justify-center">
       {win && <WinPastries win={win} />}
     </div>
     <Game setWin={setWin} />
