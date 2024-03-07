@@ -3,23 +3,29 @@ import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import Sign from "../pages/Login";
 import Total from "../pages/Total";
+import Yams from "../pages/Yams";
+import Layout from "../layouts/Layout";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Home />,
+		element: <Layout><Home /></Layout>
+	},
+	{
+		path: "/yams",
+		element: <Layout><Yams /></Layout>
 	},
 	{
 		path: "/sign",
-		element: <Sign />
+		element: <Layout><Sign /></Layout>
 	},
 	{
 		path: "/total",
-		element: <Total />
+		element: <Layout><Total /></Layout>
 	},
 	{
 		path: "/shop",
-		element: <Shop />,
+		element: <Layout><Shop /></Layout>
 	},
 ]);
 

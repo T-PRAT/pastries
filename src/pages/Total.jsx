@@ -1,14 +1,11 @@
-import Layout from "../layouts/Layout";
 import TotalComponent from "../components/Total"
 
 const Total = () => {
 	return (
-		<Layout>
-			<div>
+		<div>
 
-				<TotalComponent />
-			</div>
-		</Layout>
+			<TotalComponent />
+		</div>
 	)
 }
 

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const gameApi = createApi({
-	reducerPath: 'pastriesApi',
+	reducerPath: 'gameApi',
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/' }),
 	endpoints: (builder) => ({
 		getGamePastriesList: builder.query({
