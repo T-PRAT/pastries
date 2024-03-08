@@ -7,7 +7,7 @@ const Shop = () => {
 
 	return (
 		<div className="mx-auto max-w-2xl p-8 text-white">
-			<h1 className="text-3xl font-bold mb-6">Pastries</h1>
+			<h2 className="text-3xl font-bold mb-6">Gestion des patisseries</h2>
 			<AddPastries refetch={refetch} />
 			<hr className="my-6" />
 			{error && <div className="text-red-500 mb-4">Something went wrong</div>}

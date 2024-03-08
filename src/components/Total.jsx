@@ -1,32 +1,27 @@
-//import React from "react";
-
 const Total = () => {
-	// const pastriesFromStorage = JSON.parse(localStorage.getItem('pastries')) || [];
-	const total = localStorage.getItem('total');
-	console.log(total);
+	const total = localStorage.getItem("total");
+
+	const resetTotal = () => {
+		localStorage.setItem("total", 0);
+		window.location.reload();
+	};
+
 	return (
-		<section className="flex flex-col mx-auto w-3/4  rounded-lg p-8 text-center mt-8">
+		<section className="flex flex-col mx-auto w-3/4 rounded-lg p-8 text-center mt-8 justify-center items-center">
 			<div>
 				<h1 className="text-2xl text-white font-semibold">Total des pâtisseries gagnées :</h1>
-
 			</div>
-			{//<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-			}{/* {pastriesFromStorage.map((pastries, index) => ( */}
-			<div className="mx-auto mt-6 w-3/12"><div className="p-2">
-				<div className="text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
-					<div className="bg-gray-700 rounded-lg p-4 shadow-lg">
-
-						<h2 className="text-xl font-bold mb-2">{/*pastries.name*/}</h2>
-						<div>
-							{/*<img src={`http://placehold.it/32x32?text=${pastries.name}`} alt="" />*/}
-						</div>{total}
-						<hr className="my-2" />
-						<p>{/*Gagné {pastries.quantity} */}fois</p>
+			<div className="mx-auto mt-6 w-3/12">
+				<div className="p-2">
+					<div className="text-white font-bold rounded-lg p-2 bg-gradient-to-r from-green-400 to-blue-500">
+						<div className="bg-gray-700 rounded-lg p-4 shadow-lg text-5xl">{//total > 1 ? Math.floor(total / 2) : total
+						}{total}</div>
 					</div>
 				</div>
 			</div>
-				{/* ))} */}
-			</div>
+			<button onClick={resetTotal} className="mt-6 font-bold text-xl bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-blue-800 me-2 mb-2  bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
+				Réinitialiser
+			</button>
 		</section>
 	);
 };

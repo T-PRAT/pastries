@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsDice1, BsDice2, BsDice3, BsDice4, BsDice5, BsDice6 } from "react-icons/bs";
 
-const Game = ({ setWin }) => {
+const Game = ({ win, setWin }) => {
 	const [dice, setDice] = useState([1, 2, 3, 4, 5]);
 	const [party, setParty] = useState(5);
 	const handleReset = () => {
@@ -52,20 +52,16 @@ const Game = ({ setWin }) => {
 					</li>
 				))}
 			</ul>}
-			<div className="">
-				<div className=" rounded-3xl p-12">
-					<button className="font-bold text-xl bg-gray-600 text-white py-2 px-4 rounded-lg w-full hover:bg-blue-800 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500" onClick={() => {
-						party <= 0 ? handleReset() : roll();
-					}}>
-						{party !== 0 ? "Jouer" : "Rejouer"}
-					</button>
-					<div className="text-white py-1 px-2 rounded-lg">
-						Coups restants : <b>{party}</b>
-						{/*(party == 0) ? ((checkWin(newDice) > 0) ? 'Bravo !' : 'Perdu ...') : (
-							`Coup${party > 1 ? 's' : ''} restant${party > 1 ? 's' : ''}: `)
-						<b>{party}</b>*/}
-					</div>
-				</div></div>
+			<button className="mt-6 font-bold text-xl bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-blue-800 me-2 mb-2  bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500" onClick={() => {
+				party <= 0 ? handleReset() : roll();
+			}}>
+				{party !== 0 ? "Jouer" : "Rejouer"}
+			</button>
+			{party !== 5 &&
+				<div className="text-white py-1 px-2 rounded-lg text-center opacity-70">
+					{(party === 0) ? (win ? 'Bravo !' : 'Perdu ...') : (`Coup${party > 1 ? 's' : ''} restant${party > 1 ? 's' : ''}: `) + party}
+				</div>
+			}
 		</div >
 	);
 }

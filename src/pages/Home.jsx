@@ -19,7 +19,7 @@ const Home = () => {
 						<div className="text-center pt-8">
 							<Link
 								to="/yams"
-								className="font-bold text-xl bg-gray-700 hover:bg-blue-800 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white py-2 px-4 rounded-lg w-full"
+								className="font-bold text-xl bg-gray-700 hover:bg-blue-800 me-2 mb-2 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white py-2 px-4 rounded-lg w-full"
 							>
 								Commencer à jouer
 							</Link>

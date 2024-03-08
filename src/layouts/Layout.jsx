@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { GiCupcake } from "react-icons/gi";
-//import { logoutFunction } from "../components/Logout";
 
 const Layout = ({ children }) => {
 	return (
