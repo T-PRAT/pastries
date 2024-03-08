@@ -4,18 +4,14 @@ import { useGetRandomPastriesQuery } from "../services/game"
 const WinPatries = ({ win }) => {
 	const { data, error, isLoading } = useGetRandomPastriesQuery(win);
 
-	const addTotal = (win) => {
-		let total = localStorage.getItem("total") ? localStorage.getItem("total") : 0;
-		if (total) {
-			total = parseInt(total) + win;
-			if (total > 1) {
-				total /= 2;
-			}
-		} else {
-			total = win;
+	const addTotal = () => {
+		const total = localStorage.getItem('total');
+		if (total == null) {
+			localStorage.setItem('total', win);
 		}
-
-		localStorage.setItem("total", total);
+		else {
+			localStorage.setItem('total', (parseInt(total) + win));
+		}
 	}
 
 	useEffect(() => {
