@@ -5,15 +5,7 @@ const WinPatries = ({ win }) => {
 	const { data, error, isLoading } = useGetRandomPastriesQuery(win);
 
 	const addTotal = (win) => {
-		/*if (localStorage.getItem('total')) {
-			const newTotal = parseInt(localStorage.getItem('total')) + win;
-			localStorage.setItem('total', newTotal);
-		}
-		else {
-			localStorage.setItem('total', win);
-		}*/
 		let total = localStorage.getItem("total") ? localStorage.getItem("total") : 0;
-
 		if (total) {
 			total = parseInt(total) + win;
 			if (total > 1) {

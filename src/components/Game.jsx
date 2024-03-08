@@ -15,13 +15,12 @@ const Game = ({ win, setWin }) => {
 		for (let i = 0; i < 4; i++) {
 			if (diceArray[i] === diceArray[i + 1]) {
 				count++;
-				if (count === 3 && i === 2 && diceArray[4] === diceArray[3]) {
+				if (count === 4) {
 					setParty(0);
-					return (2);
-				}
-				else if (count === 3) {
+					return 2;
+				} else if (count === 3 && diceArray[i + 2] !== diceArray[i]) {
 					setParty(0);
-					return (1);
+					return 1;
 				}
 			} else {
 				count = 1;
